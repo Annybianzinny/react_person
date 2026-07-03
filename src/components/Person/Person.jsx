@@ -1,17 +1,19 @@
+import React from 'react';
+
 export const Person = ({ person }) => {
   const { name, age, sex, isMarried, partnerName } = person;
 
+  const partnerText = isMarried
+    ? `${partnerName} is my ${sex === 'm' ? 'wife' : 'husband'}`
+    : 'I am not married';
+
   return (
-    <div className="Person">
-      <p className="Person__name">{name}</p>
+    <section className="Person">
+      <h2 className="Person__name">My name is {name}</h2>
 
-      {age !== undefined && <p className="Person__age">{age}</p>}
+      {age !== undefined && <p className="Person__age">I am {age}</p>}
 
-      <p className="Person__partner">
-        {isMarried
-          ? `${sex === 'm' ? 'wife' : 'husband'}: ${partnerName}`
-          : 'I am not married'}
-      </p>
-    </div>
+      <p className="Person__partner">{partnerText}</p>
+    </section>
   );
 };
